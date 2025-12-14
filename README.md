@@ -34,15 +34,87 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+1)Connect the circuit on the breadboard/kit using the JK flip-flop IC (e.g., 7476/7473/4027).
+
+
+2)Give the power supply of +5V and ground to the IC.
+
+
+3)Connect the clock input to the clock generator or pulse switch.
+
+
+4)Connect inputs J and K to switches so they can be set to 0 or 1.
+
+
+5)Connect Q and Q̄ outputs to LEDs or indicators to observe the output state.
+
+
+6)Set J = 0 and K = 0, then apply a clock pulse and note the output Q (should remain unchanged).
+
+
+7)Set J = 0 and K = 1, apply a clock pulse and observe the output (Q should reset to 0).
+
+
+8)Set J = 1 and K = 0, apply a clock pulse and observe the output (Q should set to 1).
+
+
+9)Set J = 1 and K = 1, apply a clock pulse and observe the output toggle (Q becomes complement of previous state).
+
+
+10)Repeat the above steps to verify the JK flip-flop behavior for multiple clock pulses.
+
+
+11)Record all observations in a truth table format.
+
+
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+    module JK_FF(
+    input clk,
+    input j,
+    input k,
+    output reg q,
+    output reg qbar
+    );
+    
+    always @(posedge clk) begin
+    if (j == 0 && k == 0) begin
+        q <= q;
+        qbar <= qbar;
+    end 
+    else if (j == 0 && k == 1) begin
+        q <= 0;
+        qbar <= 1;
+    end 
+    else if (j == 1 && k == 0) begin
+        q <= 1;
+        qbar <= 0;
+    end 
+    else if (j == 1 && k == 1) begin
+        q <= ~q;
+        qbar <= ~qbar;
+    end
+    end
+
+    endmodule
+
+    
+ Developed by:K MONISHWAR RegisterNumber:25014914
 
 **RTL LOGIC FOR FLIPFLOPS**
 
+<img width="1195" height="582" alt="Screenshot 2025-12-14 195718" src="https://github.com/user-attachments/assets/a836c6e7-c844-45d1-a3f7-9b2202201b90" />
+
+
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
+
+<img width="959" height="514" alt="Screenshot 2025-12-14 195739" src="https://github.com/user-attachments/assets/45000752-54d2-424d-a67e-a87b0cfae8a7" />
+
+
 **RESULTS**
+
+implementation of   JK flipflop using verilog and validating their functionality using their functional tables is created successfully
+
+
